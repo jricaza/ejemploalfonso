@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hogares Felices México — Tu hogar ideal en Guadalajara</title>
+  <meta name="description" content="Asesoría confiable en compra, venta, renta y administración de inmuebles en Guadalajara, Jalisco. Agenda tu visita y encuentra tu casa ideal hoy." />
+  <meta property="og:title" content="Hogares Felices México" />
+  <meta property="og:description" content="Compra, venta, renta y administración de propiedades en Guadalajara, Jalisco." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://og-playground.vercel.app/api/og?title=Hogares%20Felices%20M%C3%A9xico" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hogares Felices México" />
+  <meta name="twitter:description" content="Compra, venta, renta y administración de propiedades en Guadalajara, Jalisco." />
+
+  <!-- Plausible Analytics (opcional) -->
+  <script defer data-domain="hogaresfelices.mx" src="https://plausible.io/js/script.js"></script>
+
+  <style>
+    :root{
+      --color-primary:#2563eb; /* azul */
+      --color-secondary:#f59e0b; /* ámbar */
+      --color-accent:#10b981; /* verde */
+      --bg:#0b1220;
+      --ink:#0f172a;
+      --ink-2:#334155;
+      --muted:#64748b;
+      --card:#ffffff;
+      --edge:#e2e8f0;
+      --radius:22px;
+      --shadow:0 10px 30px rgba(2,6,23,.12);
+      --maxw:1100px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial,"Apple Color Emoji","Segoe UI Emoji";
+      color:#0b1220;
+      background:linear-gradient(180deg,#f8fafc 0%,#f1f5f9 100%);
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    img{max-width:100%; display:block}
+    a{color:var(--color-primary); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Header */
+    header{position:sticky; top:0; z-index:50; background:#fff; box-shadow:0 2px 10px rgba(2,6,23,.08)}
+    .wrap{max-width:var(--maxw); margin-inline:auto; padding:0 20px}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; height:64px}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.3px}
+    .brand svg{width:34px; height:34px}
+    .brand b{background:linear-gradient(90deg,var(--color-primary),var(--color-secondary)); -webkit-background-clip:text; background-clip:text; color:transparent}
+    nav ul{display:flex; gap:18px; list-style:none; padding:0; margin:0}
+    nav a{font-weight:600; color:#0b1220}
+
+    .menu-btn{display:none; border:0; background:transparent}
+    .menu-btn svg{width:28px; height:28px}
+
+    @media (max-width:900px){
+      nav ul{display:none}
+      .menu-btn{display:inline-flex}
+      .mobile-menu{display:none; position:absolute; left:0; top:64px; right:0; background:#fff; border-bottom:1px solid var(--edge)}
+      .mobile-menu a{display:block; padding:14px 20px; color:#0b1220; border-top:1px solid var(--edge)}
+      .mobile-menu[aria-expanded="true"]{display:block}
+    }
+
+    /* Hero */
+    .hero{position:relative; overflow:hidden}
+    .hero .wrap{display:grid; grid-template-columns:1.1fr .9fr; align-items:center; gap:40px; padding:40px 20px; min-height:72vh}
+    .chip{display:inline-flex; align-items:center; gap:8px; background:rgba(37,99,235,.08); color:#1e3a8a; padding:8px 12px; border-radius:999px; font-weight:600}
+    .chip svg{width:18px; height:18px}
+    h1{font-size:clamp(28px,5vw,46px); line-height:1.08; margin:12px 0 12px}
+    .hero p{font-size:clamp(16px,2.5vw,19px); color:var(--muted); max-width:60ch}
+    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+    .btn{appearance:none; border:0; padding:12px 18px; border-radius:14px; font-weight:700; cursor:pointer; box-shadow:var(--shadow)}
+    .btn.primary{background:linear-gradient(135deg,var(--color-primary),#3b82f6); color:white}
+    .btn.secondary{background:#fff; border:1px solid var(--edge)}
+
+    .hero-card{background:#fff; border:1px solid var(--edge); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow)}
+    .hero-price{display:flex; align-items:baseline; gap:8px}
+    .hero-price b{font-size:28px}
+    .hero-meta{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:10px; color:#475569}
+
+    @media (max-width:900px){
+      .hero .wrap{grid-template-columns:1fr}
+    }
+
+    /* Sections */
+    .section{padding:64px 20px}
+    .section h2{font-size:clamp(22px,3.6vw,32px); margin:0 0 10px}
+    .section p.lead{color:var(--muted); max-width:65ch}
+
+    /* Services */
+    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    @media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:520px){.grid{grid-template-columns:1fr}}
+
+    .card{background:#fff; border:1px solid var(--edge); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .card h3{margin:8px 0 6px; font-size:18px}
+    .card p{margin:0; color:#475569}
+
+    /* Filters */
+    .filters{position:sticky; top:72px; background:#fff; border:1px solid var(--edge); border-radius:14px; padding:12px; display:grid; grid-template-columns:repeat(6,1fr); gap:10px}
+    .filters label{font-size:12px; color:#475569; display:block; margin-bottom:4px}
+    .filters input,.filters select{width:100%; padding:10px 12px; border:1px solid var(--edge); border-radius:10px}
+    .filters .row{display:flex; gap:10px}
+    @media (max-width:900px){.filters{grid-template-columns:repeat(2,1fr)}}
+
+    /* Properties */
+    .prop-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    @media (max-width:900px){.prop-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:520px){.prop-grid{grid-template-columns:1fr}}
+
+    .prop{background:#fff; border:1px solid var(--edge); border-radius:18px; overflow:hidden; display:flex; flex-direction:column; box-shadow:var(--shadow)}
+    .prop .thumb{aspect-ratio:16/10; background:#f1f5f9; position:relative}
+    .prop .badge{position:absolute; left:10px; top:10px; background:linear-gradient(135deg,var(--color-secondary),#fbbf24); color:#111827; padding:6px 10px; font-weight:800; border-radius:999px; font-size:12px}
+    .prop .body{padding:14px; display:grid; gap:6px}
+    .meta{display:flex; gap:10px; flex-wrap:wrap; color:#475569; font-size:14px}
+    .prop .cta{margin-top:6px}
+
+    /* Team */
+    .team{display:grid; grid-template-columns:repeat(5,1fr); gap:16px}
+    @media (max-width:900px){.team{grid-template-columns:repeat(3,1fr)}}
+    @media (max-width:520px){.team{grid-template-columns:repeat(2,1fr)}}
+    .avatar{width:68px; height:68px; border-radius:50%; background:linear-gradient(135deg,#e2e8f0,#cbd5e1); display:grid; place-items:center; font-weight:800; color:#0f172a}
+
+    /* Contact */
+    form[aria-labelledby="contact-heading"]{display:grid; gap:10px; max-width:720px}
+    .alert{padding:12px; border-radius:12px; border:1px solid var(--edge); display:none}
+    .alert[role="status"], .alert[role="alert"]{display:block}
+
+    /* Footer & chat */
+    footer{background:#0b1220; color:#cbd5e1; padding-top:36px}
+    footer a{color:#cbd5e1}
+    .foot-grid{display:grid; grid-template-columns:2fr 1fr 1fr; gap:16px}
+    @media (max-width:900px){.foot-grid{grid-template-columns:1fr}}
+    .legal{border-top:1px solid #1f2937; margin-top:20px; padding:14px 0; font-size:14px; color:#94a3b8}
+
+    /* Focus styles */
+    :focus-visible{outline:3px solid color-mix(in oklab, var(--color-primary) 70%, white); outline-offset:2px; border-radius:12px}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden">Saltar al contenido</a>
+  <header>
+    <div class="wrap nav" role="navigation" aria-label="Principal">
+      <a class="brand" href="#inicio" aria-label="Hogares Felices México, inicio">
+        <!-- Inline SVG Logo -->
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M3 10.5 12 3l9 7.5v9a1.5 1.5 0 0 1-1.5 1.5H4.5A1.5 1.5 0 0 1 3 19.5v-9Z" stroke="currentColor" stroke-width="1.5"/><path d="M9 21v-6h6v6" fill="currentColor"/></svg>
+        <span><b>Hogares Felices México</b></span>
+      </a>
+      <nav aria-label="Secciones">
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#propiedades">Propiedades</a></li>
+          <li><a href="#equipo">Equipo</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <button class="menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    </div>
+    <div id="mobile-menu" class="mobile-menu" role="dialog" aria-label="Menú móvil" aria-expanded="false">
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#propiedades">Propiedades</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section id="inicio" class="hero">
+      <div class="wrap">
+        <div>
+          <span class="chip" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l9 7.5-9 7.5L3 10.5 12 3Z" stroke="currentColor" stroke-width="1.5"/></svg>
+            Guadalajara · Jalisco
+          </span>
+          <h1>Tu hogar de ensueño te espera</h1>
+          <p>Compra, venta, renta y administración con asesoría cercana y confiable. Explora propiedades destacadas en zonas clave de Guadalajara y agenda una visita hoy.</p>
+          <div class="cta">
+            <a class="btn primary" href="#propiedades">Explorar propiedades</a>
+            <a class="btn secondary" href="#contacto">Contactar agente</a>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Propiedad destacada">
+          <div class="hero-price"><span>Desde</span> <b>$2,850,000</b> <span>MXN</span></div>
+          <div class="hero-meta">
+            <span>Americana</span>
+            <span>3 recámaras</span>
+            <span>145 m²</span>
+          </div>
+          <p style="margin:10px 0 0; color:#475569">Opciones con financiamiento y acompañamiento integral.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="section">
+      <div class="wrap">
+        <h2>Servicios inmobiliarios completos</h2>
+        <p class="lead">Te acompañamos en cada paso: desde la búsqueda hasta el cierre, con transparencia y calidez.</p>
+        <div class="grid" data-animate>
+          <article class="card"><h3>Compra</h3><p>Asesoría integral para elegir y adquirir tu propiedad ideal.</p></article>
+          <article class="card"><h3>Venta</h3><p>Estrategias de marketing y negociación para maximizar el valor.</p></article>
+          <article class="card"><h3>Renta</h3><p>Gestión completa para propietarios e inquilinos.</p></article>
+          <article class="card"><h3>Administración</h3><p>Cobro de rentas, mantenimiento y atención a inquilinos.</p></article>
+          <article class="card"><h3>Asesoría hipotecaria</h3><p>Conexión con asesores para el mejor crédito según tu perfil.</p></article>
+          <article class="card"><h3>Valuación</h3><p>Estimación profesional del valor de tu inmueble.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Propiedades y filtros -->
+    <section id="propiedades" class="section">
+      <div class="wrap">
+        <h2>Propiedades destacadas</h2>
+        <p class="lead">Filtra por tipo, ubicación, presupuesto y recámaras. Ordena por precio o recientes.</p>
+
+        <form id="filters" class="filters" role="search" aria-label="Filtros de propiedades">
+          <div>
+            <label for="tipo">Tipo</label>
+            <select id="tipo" name="tipo">
+              <option value="">Todos</option>
+              <option value="venta">Venta</option>
+              <option value="renta">Renta</option>
+            </select>
+          </div>
+          <div>
+            <label for="ciudad">Ciudad</label>
+            <select id="ciudad" name="ciudad"></select>
+          </div>
+          <div>
+            <label for="min">Precio mín. (MXN)</label>
+            <input id="min" name="min" type="number" min="0" step="50000" placeholder="0" />
+          </div>
+          <div>
+            <label for="max">Precio máx. (MXN)</label>
+            <input id="max" name="max" type="number" min="0" step="50000" placeholder="10000000" />
+          </div>
+          <div>
+            <label for="rec">Recámaras</label>
+            <select id="rec" name="rec">
+              <option value="">Todas</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5+</option>
+            </select>
+          </div>
+          <div>
+            <label for="orden">Ordenar por</label>
+            <select id="orden" name="orden">
+              <option value="recientes">Recientes</option>
+              <option value="precio-asc">Precio ascendente</option>
+              <option value="precio-desc">Precio descendente</option>
+            </select>
+          </div>
+        </form>
+
+        <div id="grid" class="prop-grid" aria-live="polite" aria-busy="false"></div>
+      </div>
+    </section>
+
+    <!-- Equipo -->
+    <section id="equipo" class="section">
+      <div class="wrap">
+        <h2>Conoce a nuestro equipo</h2>
+        <p class="lead">Agentes certificados con profundo conocimiento del mercado tapatío.</p>
+        <div class="team" data-animate>
+          <article class="card" aria-label="Perfil de agente">
+            <div class="avatar" aria-hidden="true">MD</div>
+            <h3>Mariana Domínguez</h3>
+            <p>Residencial de lujo · Zonas exclusivas</p>
+          </article>
+          <article class="card" aria-label="Perfil de agente">
+            <div class="avatar" aria-hidden="true">RS</div>
+            <h3>Ricardo Soto</h3>
+            <p>Terrenos y comercial</p>
+          </article>
+          <article class="card" aria-label="Perfil de agente">
+            <div class="avatar" aria-hidden="true">VC</div>
+            <h3>Valeria Castro</h3>
+            <p>Rentas y administración</p>
+          </article>
+          <article class="card" aria-label="Perfil de agente">
+            <div class="avatar" aria-hidden="true">JP</div>
+            <h3>Javier Pérez</h3>
+            <p>Primera vivienda e inversión</p>
+          </article>
+          <article class="card" aria-label="Perfil de agente">
+            <div class="avatar" aria-hidden="true">SH</div>
+            <h3>Sofía Herrera</h3>
+            <p>Clientes internacionales · Relocalización</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="section">
+      <div class="wrap">
+        <h2 id="contact-heading">Contacto</h2>
+        <p class="lead">Oficina: Av. Chapultepec Sur 200, Col. Americana, Guadalajara, Jalisco. Tel. +52 33 1234 5678</p>
+
+        <form id="contact-form" aria-labelledby="contact-heading">
+          <div class="row">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" name="nombre" autocomplete="name" required />
+          </div>
+          <div class="row" style="display:grid; grid-template-columns:1fr 1fr; gap:10px">
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required />
+            </div>
+            <div>
+              <label for="tel">Teléfono</label>
+              <input id="tel" name="telefono" type="tel" inputmode="tel" autocomplete="tel" required />
+            </div>
+          </div>
+          <div>
+            <label for="msg">Mensaje</label>
+            <textarea id="msg" name="mensaje" rows="4" required></textarea>
+          </div>
+          <div class="row" style="align-items:center; display:flex; gap:12px">
+            <button class="btn primary" type="submit">Enviar</button>
+            <span id="form-status" class="alert" role="status" aria-live="polite" aria-atomic="true" style="display:none"></span>
+          </div>
+          <p style="font-size:12px; color:#64748b">Al enviar aceptas nuestro aviso de privacidad.</p>
+        </form>
+
+        <div style="margin-top:18px; color:#475569">
+          <p><strong>Horarios:</strong> Lun–Vie 9:00–19:00 · Sáb 10:00–14:00 · Dom cerrado (citas previa coordinación).</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot-grid">
+      <div>
+        <h3 style="margin-top:0;color:#e5e7eb">Hogares Felices México</h3>
+        <p>Compra/venta/renta y administración con ética, transparencia y calidez.</p>
+        <p><small>Av. Chapultepec Sur 200, Col. Americana, Guadalajara, Jalisco. C.P. 44160</small></p>
+      </div>
+      <div>
+        <h4 style="color:#e2e8f0">Legales</h4>
+        <ul style="list-style:none; padding:0; margin:0; display:grid; gap:8px">
+          <li><a href="#">Aviso de privacidad</a></li>
+          <li><a href="#">Términos y condiciones</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:#e2e8f0">Redes</h4>
+        <ul style="list-style:none; padding:0; margin:0; display:grid; gap:8px">
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap legal">© <span id="year"></span> Hogares Felices México. Todos los derechos reservados.</div>
+  </footer>
+  <!-- JSON-LD: RealEstateAgent + Offers (se generan dinámicamente también) -->
+  <script type="application/ld+json" id="agent-json"></script>
+  <script type="application/ld+json" id="offers-json"></script>
+
+  <script defer>
+  // ---------- Config ----------
+  const PROVEEDOR_FORM = {
+    type: 'Formspree',
+    endpoint: 'https://formspree.io/f/your-id' // ← Reemplaza con tu ID real
+  };
+  const CHAT_PROVIDER = 'chatweb';
+
+  // ---------- Datos de ejemplo ----------
+  const PROPIEDADES = [
+    { id:'GDL-001', titulo:'Casa familiar en Americana', tipo:'venta', precio:2850000, moneda:'MXN', ciudad:'Guadalajara', estado:'Jalisco', recamaras:3, banos:2, metros:145, imagen:'', destacada:true, fecha:'2025-07-12' },
+    { id:'GDL-002', titulo:'Departamento moderno en Providencia', tipo:'venta', precio:3980000, moneda:'MXN', ciudad:'Guadalajara', estado:'Jalisco', recamaras:2, banos:2, metros:120, imagen:'', destacada:true, fecha:'2025-06-28' },
+    { id:'GDL-003', titulo:'Loft con balcón en Zona Centro', tipo:'renta', precio:16500, moneda:'MXN', ciudad:'Guadalajara', estado:'Jalisco', recamaras:1, banos:1, metros:68, imagen:'', destacada:false, fecha:'2025-05-22' },
+    { id:'GDL-004', titulo:'Penthouse con terraza en Chapalita', tipo:'venta', precio:6250000, moneda:'MXN', ciudad:'Guadalajara', estado:'Jalisco', recamaras:3, banos:3, metros:210, imagen:'', destacada:true, fecha:'2025-07-30' },
+    { id:'GDL-005', titulo:'Casa en coto en Jardines del Bosque', tipo:'venta', precio:3120000, moneda:'MXN', ciudad:'Guadalajara', estado:'Jalisco', recamaras:3, banos:2, metros:160, imagen:'', destacada:false, fecha:'2025-04-18' },
+    { id:'GDL-006', titulo:'Departamento amueblado en Puerta de Hierro', tipo:'renta', precio:28000, moneda:'MXN', ciudad:'Zapopan', estado:'Jalisco', recamaras:2, banos:2, metros:110, imagen:'', destacada:true, fecha:'2025-07-05' },
+    { id:'GDL-007', titulo:'Casa campestre en Tlajomulco', tipo:'venta', precio:2450000, moneda:'MXN', ciudad:'Tlajomulco', estado:'Jalisco', recamaras:3, banos:2, metros:180, imagen:'', destacada:false, fecha:'2025-06-15' },
+    { id:'GDL-008', titulo:'Estudio práctico en Zona Minerva', tipo:'renta', precio:12000, moneda:'MXN', ciudad:'Guadalajara', estado:'Jalisco', recamaras:1, banos:1, metros:45, imagen:'', destacada:false, fecha:'2025-03-10' },
+    { id:'GDL-009', titulo:'Departamento familiar en Lomas del Country', tipo:'venta', precio:2850000, moneda:'MXN', ciudad:'Guadalajara', estado:'Jalisco', recamaras:3, banos:2, metros:138, imagen:'', destacada:false, fecha:'2025-07-20' },
+    { id:'GDL-010', titulo:'Local comercial en Av. Chapultepec', tipo:'renta', precio:45000, moneda:'MXN', ciudad:'Guadalajara', estado:'Jalisco', recamaras:0, banos:1, metros:95, imagen:'', destacada:true, fecha:'2025-08-01' },
+    { id:'GDL-011', titulo:'Oficina en Zona Financiera', tipo:'renta', precio:32000, moneda:'MXN', ciudad:'Zapopan', estado:'Jalisco', recamaras:0, banos:2, metros:130, imagen:'', destacada:false, fecha:'2025-07-10' },
+    { id:'GDL-012', titulo:'Terreno residencial en Bugambilias', tipo:'venta', precio:1980000, moneda:'MXN', ciudad:'Zapopan', estado:'Jalisco', recamaras:0, banos:0, metros:300, imagen:'', destacada:false, fecha:'2025-06-01' },
+    { id:'GDL-013', titulo:'Casa esquina en Santa Tere', tipo:'venta', precio:2650000, moneda:'MXN', ciudad:'Guadalajara', estado:'Jalisco', recamaras:2, banos:2, metros:130, imagen:'', destacada:false, fecha:'2025-07-02' },
+    { id:'GDL-014', titulo:'Departamento en Country Club', tipo:'venta', precio:7550000, moneda:'MXN', ciudad:'Guadalajara', estado:'Jalisco', recamaras:3, banos:3, metros:220, imagen:'', destacada:true, fecha:'2025-08-05' },
+    { id:'GDL-015', titulo:'Bodega ligera en Periférico Norte', tipo:'renta', precio:38000, moneda:'MXN', ciudad:'Zapopan', estado:'Jalisco', recamaras:0, banos:1, metros:480, imagen:'', destacada:false, fecha:'2025-05-29' },
+    { id:'GDL-016', titulo:'Casa nueva en La Estancia', tipo:'venta', precio:3350000, moneda:'MXN', ciudad:'Zapopan', estado:'Jalisco', recamaras:3, banos:3, metros:170, imagen:'', destacada:false, fecha:'2025-07-26' }
+  ];
+
+  const money = n => n.toLocaleString('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0});
+
+  const placeholder = () => {
+    const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='800' height='500'>
+      <defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='%23e2e8f0'/><stop offset='1' stop-color='%23cbd5e1'/></linearGradient></defs>
+      <rect width='100%' height='100%' fill='url(%23g)'/>
+      <text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='36' fill='%235b677a'>Hogares Felices México</text>
+    </svg>`;
+    return 'data:image/svg+xml;utf8,'+encodeURIComponent(svg);
+  };
+
+  // ---------- Menú móvil ----------
+  const menuBtn = document.querySelector('.menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if(menuBtn){
+    menuBtn.addEventListener('click',()=>{
+      const exp = menuBtn.getAttribute('aria-expanded')==='true';
+      menuBtn.setAttribute('aria-expanded', String(!exp));
+      mobileMenu.setAttribute('aria-expanded', String(!exp));
+    });
+  }
+
+  // ---------- Poblado de ciudades ----------
+  const ciudadSel = document.getElementById('ciudad');
+  const ciudades = Array.from(new Set(PROPIEDADES.map(p=>p.ciudad))).sort();
+  ciudadSel.innerHTML = '<option value="">Todas</option>' + ciudades.map(c=>`<option>${c}</option>`).join('');
+
+  // ---------- Render de propiedades ----------
+  const grid = document.getElementById('grid');
+  const form = document.getElementById('filters');
+
+  function matchesFilters(p){
+    const tipo = form.tipo.value;
+    const ciudad = form.ciudad.value;
+    const min = Number(form.min.value || 0);
+    const max = Number(form.max.value || Infinity);
+    let rec = form.rec.value;
+    const recNum = rec === '5+' ? 5 : (rec? Number(rec): null);
+
+    if(tipo && p.tipo!==tipo) return false;
+    if(ciudad && p.ciudad!==ciudad) return false;
+    if(p.precio < min || p.precio > max) return false;
+    if(recNum!==null){
+      if(rec==='5+' && p.recamaras < 5) return false;
+      if(rec!=='5+' && p.recamaras !== recNum) return false;
+    }
+    return true;
+  }
+
+  function sortProps(arr){
+    const by = form.orden.value;
+    const cp = [...arr];
+    if(by==='precio-asc') cp.sort((a,b)=>a.precio-b.precio);
+    else if(by==='precio-desc') cp.sort((a,b)=>b.precio-a.precio);
+    else if(by==='recientes') cp.sort((a,b)=>new Date(b.fecha)-new Date(a.fecha));
+    return cp;
+  }
+
+  function card(p){
+    const badge = p.destacada ? `<span class=\"badge\">Destacada</span>` : '';
+    const img = p.imagen || placeholder();
+    const beds = p.recamaras>0?`${p.recamaras} rec.`:'——';
+    const baths = p.banos>0?`${p.banos} baños`:'——';
+    return `
+    <article class=\"prop\" tabindex=\"0\" aria-labelledby=\"${p.id}-t\">
+      <div class=\"thumb\">
+        ${badge}
+        <img src=\"${img}\" alt=\"${p.titulo}\" loading=\"lazy\" />
+      </div>
+      <div class=\"body\">
+        <h3 id=\"${p.id}-t\" style=\"margin:0\">${p.titulo}</h3>
+        <div class=\"meta\">
+          <span>${p.ciudad}, ${p.estado}</span>
+          <span>${beds}</span>
+          <span>${baths}</span>
+          <span>${p.metros} m²</span>
+        </div>
+        <strong>${money(p.precio)} ${p.tipo==='renta'?'/ mes':''}</strong>
+        <div class=\"cta\">
+          <a class=\"btn secondary\" href=\"#contacto\" aria-label=\"Solicitar información de ${p.titulo}\">Quiero más info</a>
+          <button class=\"btn primary open-chat\" data-prop=\"${p.id}\" aria-label=\"Abrir chat sobre ${p.titulo}\">Chat ahora</button>
+        </div>
+      </div>
+    </article>`;
+  }
+
+  function render(){
+    const list = sortProps(PROPIEDADES.filter(matchesFilters));
+    grid.setAttribute('aria-busy','true');
+    grid.innerHTML = list.map(card).join('');
+    grid.setAttribute('aria-busy','false');
+    // JSON-LD Offers
+    const offers = list.map(p=>({
+      '@context':'https://schema.org',
+      '@type':'Offer',
+      'name': p.titulo,
+      'price': p.precio,
+      'priceCurrency':'MXN',
+      'url': `https://www.hogaresfelices.mx/propiedad/${p.id}`,
+      'availability':'https://schema.org/InStock',
+      'category': p.tipo==='venta'?'forSale':'forRent',
+      'itemOffered':{
+        '@type':'Product',
+        'name': p.titulo
+      }
+    }));
+    document.getElementById('offers-json').textContent = JSON.stringify(offers);
+  }
+
+  form.addEventListener('input', render);
+  render();
+
+  // ---------- Contacto (validación + envío) ----------
+  const contactForm = document.getElementById('contact-form');
+  const statusEl = document.getElementById('form-status');
+  contactForm.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const email = contactForm.email.value.trim();
+    const tel = contactForm.telefono.value.trim();
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const telOk = /^[0-9+\-()\s]{8,20}$/.test(tel);
+    if(!emailOk){ statusEl.setAttribute('role','alert'); statusEl.textContent = 'Por favor, ingresa un email válido.'; statusEl.style.display='block'; return; }
+    if(!telOk){ statusEl.setAttribute('role','alert'); statusEl.textContent = 'Por favor, ingresa un teléfono válido.'; statusEl.style.display='block'; return; }
+    statusEl.setAttribute('role','status'); statusEl.textContent = 'Enviando…'; statusEl.style.display='block';
+
+    try{
+      const resp = await fetch(PROVEEDOR_FORM.endpoint,{
+        method:'POST', headers:{'Accept':'application/json','Content-Type':'application/json'},
+        body: JSON.stringify({
+          nombre: contactForm.nombre.value,
+          email: email,
+          telefono: tel,
+          mensaje: contactForm.mensaje.value,
+          origen: 'Hogares Felices México — Sitio web (formulario)'
+        })
+      });
+      if(resp.ok){ statusEl.setAttribute('role','status'); statusEl.textContent = '¡Gracias! Te contactaremos pronto.'; contactForm.reset(); }
+      else{ throw new Error('Error al enviar'); }
+    }catch(err){ statusEl.setAttribute('role','alert'); statusEl.textContent = 'No se pudo enviar. Intenta más tarde o chatea con nosotros.'; }
+  });
+
+  // ---------- Accesibilidad / UX ----------
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // IntersectionObserver para animaciones suaves, respeta reduced-motion
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!prefersReduced){
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting){
+          en.target.animate([
+            {opacity:0, transform:'translateY(10px)'},
+            {opacity:1, transform:'translateY(0)'}
+          ],{duration:500, easing:'ease-out', fill:'forwards'});
+          obs.unobserve(en.target);
+        }
+      });
+    },{threshold:.12});
+    document.querySelectorAll('[data-animate]').forEach(el=>obs.observe(el));
+  }
+
+  // ---------- JSON-LD agente ----------
+  const agent = {
+    '@context':'https://schema.org',
+    '@type':'RealEstateAgent',
+    'name':'Hogares Felices México',
+    'areaServed': ['Guadalajara','Zapopan','Tlajomulco'],
+    'telephone': '+52 33 1234 5678',
+    'address': {
+      '@type':'PostalAddress',
+      'streetAddress':'Av. Chapultepec Sur 200, Colonia Americana',
+      'addressLocality':'Guadalajara',
+      'addressRegion':'Jalisco',
+      'postalCode':'44160',
+      'addressCountry':'MX'
+    },
+    'openingHoursSpecification': [
+      { '@type':'OpeningHoursSpecification','dayOfWeek':['Monday','Tuesday','Wednesday','Thursday','Friday'],'opens':'09:00','closes':'19:00' },
+      { '@type':'OpeningHoursSpecification','dayOfWeek':['Saturday'],'opens':'10:00','closes':'14:00' }
+    ],
+    'url':'https://www.hogaresfelices.mx'
+  };
+  document.getElementById('agent-json').textContent = JSON.stringify(agent);
+  </script>
+  <!-- Botpress Webchat -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/08/10/16/20250810162147-ZIO60B0K.js" defer></script>
+</body>
+</html>
+
